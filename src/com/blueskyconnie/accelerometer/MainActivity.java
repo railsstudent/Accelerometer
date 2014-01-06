@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends Activity implements SensorEventListener {
 
@@ -114,7 +113,6 @@ public class MainActivity extends Activity implements SensorEventListener {
 				iv.setVisibility(View.INVISIBLE);
 			} 
 
-			
 			/*else if (deltaY > deltaX) {
 				iv.setImageResource(R.drawable.vertical);
 			} else {
