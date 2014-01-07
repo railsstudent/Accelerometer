@@ -18,7 +18,7 @@ public class ExplanationFragment extends Fragment implements TextToSpeech.OnInit
 	private Button btnSpeech;
 	private TextView txtText;
 	private TextToSpeech tts;
-	
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -54,7 +54,6 @@ public class ExplanationFragment extends Fragment implements TextToSpeech.OnInit
             tts.stop();
             tts.shutdown();
         }
-        super.onDestroy();
 		super.onDestroy();
 	}
 
@@ -82,6 +81,4 @@ public class ExplanationFragment extends Fragment implements TextToSpeech.OnInit
             Log.e("TTS", "Initilization Failed!");
         }
 	}
-
-	
 }

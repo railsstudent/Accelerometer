@@ -13,8 +13,6 @@ import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -29,10 +27,6 @@ public class MainFragment extends Fragment implements SensorEventListener {
 	private float mLastY;
 	private float mLastZ;
 	private int numOfShake;
-	private TextView tvX;
-	private TextView tvY;
-	private TextView tvZ;
-	private ImageView iv;
 	private int count = 0;
 	private Random rnd;
 	
@@ -47,10 +41,6 @@ public class MainFragment extends Fragment implements SensorEventListener {
 		mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
 		rnd = new Random();
 		
-		tvX= (TextView) rootView.findViewById(R.id.x_axis);
-		tvY= (TextView) rootView.findViewById(R.id.y_axis);
-		tvZ= (TextView) rootView.findViewById(R.id.z_axis);
-		iv = (ImageView) rootView.findViewById(R.id.image);
 		return rootView;
 	}
 
@@ -58,7 +48,7 @@ public class MainFragment extends Fragment implements SensorEventListener {
 	public void onResume() {
 		super.onResume();
 		mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
-		count = rnd.nextInt(16) + 1;
+		count = (rnd.nextInt(5) + 1) * 2;
 		Toast.makeText(getActivity(), "MainFragment - On Resume, shake at least " + (count / 2) + " times.", 
 					Toast.LENGTH_SHORT).show();
 		numOfShake = 0;
@@ -83,9 +73,6 @@ public class MainFragment extends Fragment implements SensorEventListener {
 			mLastX = x;
 			mLastY = y;
 			mLastZ = z;
-			tvX.setText("0.0");
-			tvY.setText("0.0");
-			tvZ.setText("0.0");
 			mInitialized = true;
 		} else {
 			float deltaX = Math.abs(mLastX - x);
@@ -94,16 +81,11 @@ public class MainFragment extends Fragment implements SensorEventListener {
 			if (deltaX < NOISE) deltaX = (float)0.0;
 			if (deltaY < NOISE) deltaY = (float)0.0;
 			if (deltaZ < NOISE) deltaZ = (float)0.0;
-			tvX.setText(Float.toString(deltaX));
-			tvY.setText(Float.toString(deltaY));
-			tvZ.setText(Float.toString(deltaZ));
-			iv.setVisibility(View.VISIBLE);
 			if ( (deltaX > deltaY) && (mLastX < x) ) {
 				// shake horizontally
-				iv.setImageResource(R.drawable.horizontal);
 				if (numOfShake >=  count) {
-					// replace to explanation fragment
-					Fragment frag = new ExplanationFragment();
+					// replace to charm fragment
+					Fragment frag = new CharmMediaFragment();
 					FragmentManager fragmentManager = this.getFragmentManager();
 					fragmentManager.beginTransaction()
 						.replace(R.id.frame_container, frag)
@@ -111,9 +93,7 @@ public class MainFragment extends Fragment implements SensorEventListener {
 						.commit();
 				}
 				numOfShake++;
-			} else {
-				iv.setVisibility(View.INVISIBLE);
-			}
+			} 
 			mLastX = x;
 			mLastY = y;
 			mLastZ = z;
