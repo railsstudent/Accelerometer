@@ -49,10 +49,7 @@ public class ExplanationMediaFragment extends Fragment implements MediaPlayer.On
 		interpretationIdx = rnd.nextInt(3);
 		
 		audioFile = "raw/e" + charmIdx + interpretationIdx;
-		int resInterpretationId = getResources().getIdentifier(audioFile, null, getActivity().getPackageName());
-		mediaPlayer = MediaPlayer.create(getActivity(), resInterpretationId);
-		mediaPlayer.setOnCompletionListener(this);
-		mediaPlayer.setOnErrorListener(this);
+		initializeMediaPlayer();
 		
 		txtText = (TextView) rootView.findViewById(R.id.textView1);
 		txtText.setText(interpretations[charmIdx][interpretationIdx]);
@@ -68,6 +65,12 @@ public class ExplanationMediaFragment extends Fragment implements MediaPlayer.On
 		return rootView;
 	}
 
+	@Override
+	public void onResume() {
+		super.onResume();
+		initializeMediaPlayer();
+		btnSpeech.setEnabled(true);
+	}
 
 	@Override
 	public void onPause() {
@@ -87,13 +90,19 @@ public class ExplanationMediaFragment extends Fragment implements MediaPlayer.On
         super.onDestroy();
 	}
 
-
 	private void speakOut() {
 		btnSpeech.setEnabled(false);
 		//int resInterpretationId = getResources().getIdentifier(audioFile, null, getActivity().getPackageName());
 		playSample();
 	//	btnSpeech.setEnabled(true);
     }
+	
+	private void initializeMediaPlayer() {
+		int resInterpretationId = getResources().getIdentifier(audioFile, null, getActivity().getPackageName());
+		mediaPlayer = MediaPlayer.create(getActivity(), resInterpretationId);
+		mediaPlayer.setOnCompletionListener(this);
+		mediaPlayer.setOnErrorListener(this);
+	}
 	
 	/**
 	 * Play a sample with the Android MediaPLayer.

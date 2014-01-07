@@ -39,17 +39,13 @@ public class CharmMediaFragment extends Fragment implements MediaPlayer.OnComple
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-	//	int resId = getResources().getIdentifier("raw/book_name", null, getActivity().getPackageName());
 		View rootView = (View) inflater.inflate(R.layout.fragment_charm, null);
 		
 		charmIdx = rnd.nextInt(charms.length);
 		txtText = (TextView) rootView.findViewById(R.id.textView1);
 		txtText.setText(charms[charmIdx]);
 		
-		int resCharmId = getResources().getIdentifier("raw/charm" + charmIdx, null, getActivity().getPackageName());
-		mediaPlayer = MediaPlayer.create(getActivity(), resCharmId);
-		mediaPlayer.setOnCompletionListener(this);
-		mediaPlayer.setOnErrorListener(this);
+		initializeMediaPlayer();
 		
 		btnSpeech = (Button) rootView.findViewById(R.id.btnSpeech);
 		btnSpeech.setOnClickListener(new OnClickListener() {
@@ -82,6 +78,13 @@ public class CharmMediaFragment extends Fragment implements MediaPlayer.OnComple
 		return rootView;
 	}
 
+	private void initializeMediaPlayer() {
+		int resCharmId = getResources().getIdentifier("raw/charm" + charmIdx, null, getActivity().getPackageName());
+		mediaPlayer = MediaPlayer.create(getActivity(), resCharmId);
+		mediaPlayer.setOnCompletionListener(this);
+		mediaPlayer.setOnErrorListener(this);
+	}
+
 	@Override
 	public void onPause() {
 	    // Don't forget to release mediaplayer when exit fragment
@@ -104,6 +107,7 @@ public class CharmMediaFragment extends Fragment implements MediaPlayer.OnComple
 	@Override
 	public void onResume() {
 		super.onResume();
+		initializeMediaPlayer();
 		btnSpeech.setEnabled(true);
 	}
 
