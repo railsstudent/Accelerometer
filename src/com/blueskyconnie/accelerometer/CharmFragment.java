@@ -39,7 +39,6 @@ public class CharmFragment extends Fragment {
 			if (isWithinBound(x, y)) {
 				Fragment fragment = new ExplanationMediaFragment(); 
 				Bundle bundle = new Bundle();
-				charmIdx = 1;
 				bundle.putInt(Constants.CHARMIDX, charmIdx);
 				fragment.setArguments(bundle);
 				FragmentManager fragmentManager = CharmFragment.this.getFragmentManager();
