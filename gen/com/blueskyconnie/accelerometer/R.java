@@ -21,32 +21,40 @@ public final class R {
         public static final int activity_vertical_margin=0x7f050001;
     }
     public static final class drawable {
-        public static final int horizontal=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
-        public static final int wolf=0x7f020002;
+        public static final int app_start=0x7f020000;
+        public static final int horizontal=0x7f020001;
+        public static final int ic_launcher=0x7f020002;
+        public static final int pink_sheet=0x7f020003;
+        public static final int pink_sheet_hotspot=0x7f020004;
+        public static final int wolf=0x7f020005;
     }
     public static final class id {
-        public static final int RelativeLayout1=0x7f080001;
-        public static final int btnInterpretation=0x7f080004;
-        public static final int btnSpeech=0x7f080003;
+        public static final int RelativeLayout1=0x7f080002;
+        public static final int btnInterpretation=0x7f080007;
+        public static final int btnSpeech=0x7f080006;
         public static final int frame_container=0x7f080000;
-        public static final int textView1=0x7f080002;
+        public static final int img=0x7f080001;
+        public static final int imgHotspot=0x7f080004;
+        public static final int textView1=0x7f080005;
+        public static final int tvCharm=0x7f080003;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
-        public static final int fragment_charm=0x7f030001;
-        public static final int fragment_explain=0x7f030002;
-        public static final int fragment_main=0x7f030003;
+        public static final int activity_splash=0x7f030001;
+        public static final int fragment_charm=0x7f030002;
+        public static final int fragment_explain=0x7f030003;
+        public static final int fragment_main=0x7f030004;
+        public static final int fragment_teaching=0x7f030005;
     }
     public static final class raw {
-        public static final int charm0=0x7f040000;
-        public static final int charm1=0x7f040001;
-        public static final int e00=0x7f040002;
-        public static final int e01=0x7f040003;
-        public static final int e02=0x7f040004;
-        public static final int e10=0x7f040005;
-        public static final int e11=0x7f040006;
-        public static final int e12=0x7f040007;
+        public static final int explain0=0x7f040000;
+        public static final int explain1=0x7f040001;
+        public static final int t00=0x7f040002;
+        public static final int t01=0x7f040003;
+        public static final int t02=0x7f040004;
+        public static final int t10=0x7f040005;
+        public static final int t11=0x7f040006;
+        public static final int t12=0x7f040007;
     }
     public static final class string {
         public static final int app_name=0x7f060000;

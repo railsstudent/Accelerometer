@@ -84,12 +84,12 @@ public class MainFragment extends Fragment implements SensorEventListener {
 			if ( (deltaX > deltaY) && (mLastX < x) ) {
 				// shake horizontally
 				if (numOfShake >=  count) {
-					// replace to charm fragment
-					Fragment frag = new CharmMediaFragment();
+					// replace  first fragment
+					Fragment frag = new CharmFragment();
 					FragmentManager fragmentManager = this.getFragmentManager();
 					fragmentManager.beginTransaction()
 						.replace(R.id.frame_container, frag)
-						.addToBackStack(null)
+						.addToBackStack(Constants.MAIN_STATE)
 						.commit();
 				}
 				numOfShake++;

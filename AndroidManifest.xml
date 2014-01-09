@@ -14,14 +14,18 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.blueskyconnie.accelerometer.MainActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/app_name" >
+            android:name="com.blueskyconnie.accelerometer.SplashActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.blueskyconnie.accelerometer.MainActivity"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 

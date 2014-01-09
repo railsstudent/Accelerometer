@@ -23,7 +23,7 @@ public class ExplanationFragment extends Fragment implements TextToSpeech.OnInit
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		View rootView = (View) inflater.inflate(R.layout.fragment_explain, null);
+		View rootView = (View) inflater.inflate(R.layout.fragment_teaching, null);
 		txtText = (TextView) rootView.findViewById(R.id.textView1);
 		btnSpeech = (Button) rootView.findViewById(R.id.btnSpeech);
 		btnSpeech.setOnClickListener(new OnClickListener(){
